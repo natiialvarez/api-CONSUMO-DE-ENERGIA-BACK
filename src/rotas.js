@@ -3,6 +3,6 @@ const { procuraDeFornecedor } = require('./controladores/cliente');
 const rotas = express()
 
 
-rotas.post('/fornecedor', procuraDeFornecedor)
+rotas.get('/fornecedor', procuraDeFornecedor)
 
 module.exports = rotas;
