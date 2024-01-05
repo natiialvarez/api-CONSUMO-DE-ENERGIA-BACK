@@ -1,7 +1,7 @@
 const knex = require('../banco de dados/conexao');
 
 const procuraDeFornecedor = async (req, res) => {
-    const { nome, consumo_mensal, estado } = req.body
+    const { consumo_mensal, } = req.body
     if (!consumo_mensal) {
         return res.status(400).json({ mensagem: "Necessário informar o consumo mensal" })
     }
@@ -11,10 +11,10 @@ const procuraDeFornecedor = async (req, res) => {
             .where('limite_minimo_kwh', '<=', consumo_mensal)
 
         if (!provavelFornecedor || provavelFornecedor.length === 0) {
-            return res.status(200).json({ mensagem: "Não foi possivel encontrar um fornecedor que atenda o consumo mensal" })
+            return res.status(404).json({ mensagem: "Não foi possivel encontrar um fornecedor que atenda o consumo mensal" })
         }
 
-        return res.status(200).json({ mensagem: `Os fornecedores encontrados foram: ${JSON.stringify(provavelFornecedor)}` })
+        return res.status(200).json(provavelFornecedor)
     } catch (error) {
         console.log(error)
         return res.status(500).json({ mensagem: 'Erro interno do servidor' })
