@@ -13,16 +13,6 @@ const procuraDeFornecedor = async (req, res) => {
         if (!provavelFornecedor || provavelFornecedor.length === 0) {
             return res.status(200).json({ mensagem: "Não foi possivel encontrar um fornecedor que atenda o consumo mensal" })
         }
-        const nomesFornecedores = provavelFornecedor.map(empresa => empresa.nome)
-
-        const clienteDados = {
-            nome,
-            consumo_mensal,
-            estado,
-            provavel_fornecedor: nomesFornecedores.join(', ')
-        }
-        const fornecedoresParaOCliente = await knex('cliente')
-            .insert(clienteDados)
 
         return res.status(200).json({ mensagem: `Os fornecedores encontrados foram: ${JSON.stringify(provavelFornecedor)}` })
     } catch (error) {
