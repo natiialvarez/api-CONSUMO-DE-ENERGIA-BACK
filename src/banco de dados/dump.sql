@@ -17,4 +17,5 @@ CREATE TABLE cliente (
   fornecedor VARCHAR(255)
   )
 
-
+ALTER TABLE cliente
+ADD COLUMN estado VARCHAR(255);
