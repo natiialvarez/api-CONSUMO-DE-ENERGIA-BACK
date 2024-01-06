@@ -9,13 +9,3 @@ CREATE TABLE fornecedores (
   avaliacao_media_dos_clientes DECIMAL(3, 1)
 );
 
-CREATE TABLE cliente (
-  id SERIAL PRIMARY KEY,
-  nome VARCHAR(255) NOT NULL,
-  consumo_mensal DECIMAL(10,3) NOT NULL,
-  provavel_fornecedor VARCHAR (255),	
-  fornecedor VARCHAR(255)
-  )
-
-ALTER TABLE cliente
-ADD COLUMN estado VARCHAR(255);
